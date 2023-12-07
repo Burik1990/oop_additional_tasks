@@ -9,7 +9,28 @@
 
 
 class MyList2:
-    pass
+    def __init__(self, data):
+        self.data = data
+
+    # def __iter__(self):
+    #     self.item = -1
+    #     return self
+    #
+    # def __next__(self):
+    #     if self.item < len(self.data):
+    #         self.item += 1
+    #         return self.item
+    #     else:
+    #         StopIteration
+
+    def __getitem__(self, item):
+        if not isinstance(item, int):
+            raise TypeError("Индекс должен быть целым числом")
+
+        if 0 <= item < len(self.data):
+            return self.data[item]
+        else:
+            raise IndexError("Неверный индекс")
 
 
 # код для проверки 

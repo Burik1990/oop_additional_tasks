@@ -7,10 +7,31 @@
 - __str__(self): магический метод, возвращающий строковое представление дроби;
 - __add__(self, other): магический метод, который позволяет складывать дроби и возвращать новую дробь.
 """
+from math import gcd
 
 
 class Fraction:
-    pass
+
+    def __init__(self, numerator, denominator):
+        self.numerator = numerator
+        self.denominator = denominator
+
+    def __repr__(self):
+        return f"{self.__class__.__name__}({self.numerator}, {self.denominator})"
+
+    def __str__(self):
+        return f'{self.numerator}/{self.denominator}'
+
+    def __add__(self, other):
+        n1, n2 = self.numerator, other.numerator
+        d1, d2 = self.denominator, other.denominator
+        xn = n1*d2 + n2*d1
+        xd = d1*d2
+        d = gcd(xn, xd)
+        if xn//d != xd // d:
+            return f"{xn//d}/{xd // d}"
+        else:
+            return f"{xn//d}"
 
 
 # код для проверки 

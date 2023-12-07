@@ -10,7 +10,11 @@
 
 
 class Student:
-    pass
+    __slots__ = ('name', 'age', 'grades')
+
+
+class Course:
+    __slots__ = ('name', 'students')
 
 
 # код для проверки 
@@ -27,3 +31,4 @@ student2.grades = [95, 85, 90]
 course = Course()
 course.name = "Math"
 course.students = [student1, student2]
+

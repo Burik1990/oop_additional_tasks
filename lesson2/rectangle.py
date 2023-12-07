@@ -8,13 +8,38 @@
 - is_square(width, height): статический метод, принимающий ширину и высоту прямоугольника и возвращающий True,
 если это квадрат, и False в противном случае
 """
+from math import sqrt
 
 
 class Rectangle:
-    pass
+
+    def __init__(self, width, height):
+        self.widht = width
+        self.height = height
+
+    def area(self):
+        return self.height * self.widht
+
+    def perimeter(self):
+        return (self.height + self.widht) * 2
+
+    @classmethod
+    def from_diagonal(cls, diagonal, aspect_ratio):
+        cls.diagonal = diagonal
+        cls.aspect_ratio = aspect_ratio
+        height = sqrt((diagonal ^ 2) / (aspect_ratio ^ 2 + 1))
+        width = 2 * height
+        return cls(width, height)
+
+    @staticmethod
+    def is_square(width, height):
+        if width == height:
+            return True
+        else:
+            return False
 
 
-# код для проверки 
+# код для проверки
 rectangle = Rectangle(4, 5)
 print(rectangle.area())  # 20
 print(rectangle.perimeter())  # 18

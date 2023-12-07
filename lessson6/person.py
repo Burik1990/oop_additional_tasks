@@ -14,14 +14,22 @@
 
 
 class Person:
-    pass
+    __slots__ = ('name', 'age')
+
+
+class Employee(Person):
+    __slots__ = ('salary',)
+
+
+class Manager(Employee):
+    __slots__ = ('bonus',)
 
 
 # код для проверки 
 person = Person()
 person.name = "John"
 person.age = 30
-person.salary = 5000  # raises AttributeError
+# person.salary = 5000  # raises AttributeError
 
 employee = Employee()
 employee.name = "Jane"
